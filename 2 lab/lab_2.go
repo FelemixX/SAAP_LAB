@@ -16,7 +16,7 @@ func main() {
 
 	fileDir := "D:\\Study\\Magistracy\\System Administration and Programming\\Labs\\1\\2 lab\\test.txt"
 	wordLength := 4
-	readWords(fileDir, wordLength) //2
+	readWords(fileDir, wordLength) //5
 }
 
 func findFilesByExtension(directory string, fileExtension string) {
