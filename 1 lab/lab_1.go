@@ -16,13 +16,13 @@ func main() {
 	fmt.Println(fmt.Sprintf("k largest elem %v", mKResult))
 }
 
-func smallestK(arr []int, k int) []int {
+func smallestK(arr []int, k int) []int { //task 4
 	sort.Ints(arr)
 
 	return arr[:k]
 }
 
-func largestK(arr []int, k int) []int {
+func largestK(arr []int, k int) []int { //task 5
 	sort.Sort(sort.Reverse(sort.IntSlice(arr)))
 
 	return arr[:k]
