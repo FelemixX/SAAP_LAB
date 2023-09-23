@@ -65,7 +65,7 @@ func (g Game) String() string {
 
 func main() {
 	// Create a new game.
-	game := NewGame()
+	game := NewGame() //1
 
 	// Add some moves.
 	game.AddMove("a1", "b2", "pawn")
