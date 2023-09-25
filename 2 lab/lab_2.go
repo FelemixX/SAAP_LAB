@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
@@ -14,8 +15,8 @@ func main() {
 	fileExtension := "jpg"
 	findFilesByExtension(directory, fileExtension) //1
 
-	fileDir := "D:\\Study\\Magistracy\\System Administration and Programming\\Labs\\1\\2 lab\\test.txt"
-	wordLength := 4
+	fileDir := "D:\\Study\\Magistracy\\System Administration and Programming\\Labs\\1\\2 lab\\test2.txt"
+	wordLength := 8
 	readWords(fileDir, wordLength) //5
 }
 
@@ -48,11 +49,11 @@ func readWords(filename string, wordLength int) {
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
 		words := strings.Fields(scanner.Text())
 		for _, word := range words {
-			if len(word) == wordLength {
-				fmt.Print(word)
+			word = removeSeparators(word)
+			if len([]rune(word)) == wordLength {
+				fmt.Println(word)
 			}
 		}
 	}
@@ -60,5 +61,10 @@ func readWords(filename string, wordLength int) {
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
+}
 
+func removeSeparators(s string) string {
+	re := regexp.MustCompile("[,.!?-]")
+
+	return re.ReplaceAllString(s, "")
 }
