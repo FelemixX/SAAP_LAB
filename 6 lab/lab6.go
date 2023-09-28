@@ -37,3 +37,30 @@ func Task1(dir string) (string, int64) {
 
 	return maxFile, maxSize
 }
+
+func Task8(dir, extension string) []string {
+	result := []string{}
+
+	if extension[0] != '.' {
+		extension = `.` + extension // :D
+	}
+
+	err := filepath.WalkDir(dir, func(path string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if !d.IsDir() && filepath.Ext(d.Name()) == extension {
+			result = append(result, d.Name())
+
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Println(err)
+	}
+
+	return result
+}
